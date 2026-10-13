@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091a33">
+  <meta name="description" content="{% block meta_description %}NUVAIX GROUP is a diversified enterprise operating across technology, construction, real estate and more.{% endblock %}">
+  <title>{% block title %}{{ company.name }} | Innovate. Build. Deliver. Grow.{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'core/css/site.css' %}">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer src="{% static 'core/js/site.js' %}"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topline"><div class="container topline-inner"><span><i class="status-pulse"></i> NUVAIX SOLUTIONS LTD <i>•</i> RC {{ company.rc }}</span><span class="topline-note">INNOVATE <b>·</b> BUILD <b>·</b> DELIVER <b>·</b> GROW</span></div></div>
+<header class="site-header" data-header>
+  <div class="container nav-wrap">
+    <a class="brand" href="{% url 'home' %}" aria-label="NUVAIX GROUP home">
+      <img class="brand-logo" src="{% static 'core/images/brand/logo/Logo_whs(6).png' %}" alt="NUVAIX GROUP logo">
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><b class="sr-only">Toggle navigation</b></button>
+    <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+      <a class="{% if active == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+      <a class="{% if active == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
+      <a class="{% if active == 'businesses' %}active{% endif %}" href="{% url 'businesses' %}">Businesses</a>
+      <a class="{% if active == 'technology' %}active{% endif %}" href="{% url 'technology' %}">Technology</a>
+      <a class="{% if active == 'paint' %}active{% endif %}" href="{% url 'paint' %}">NUVAIX Paint</a>
+      <a class="{% if active == 'projects' %}active{% endif %}" href="{% url 'projects' %}">Projects</a>
+      <a class="{% if active == 'insights' %}active{% endif %}" href="{% url 'insights' %}">Insights</a>
+      <a class="nav-contact" href="{% url 'contact' %}">Let's talk <span>↗</span></a>
+    </nav>
+  </div>
+</header>
+<div class="motion-ticker" aria-label="NUVAIX capabilities">
+  <div class="motion-ticker-track">
+    <span>INNOVATE</span><i>✦</i><span>BUILD</span><i>✦</i><span>DELIVER</span><i>✦</i><span>GROW</span><i>✦</i><span>TECHNOLOGY</span><i>✦</i><span>INFRASTRUCTURE</span><i>✦</i><span>REAL ESTATE</span><i>✦</i><span>INNOVATE</span><i>✦</i><span>BUILD</span><i>✦</i><span>DELIVER</span><i>✦</i><span>GROW</span><i>✦</i><span>TECHNOLOGY</span><i>✦</i><span>INFRASTRUCTURE</span><i>✦</i><span>REAL ESTATE</span><i>✦</i>
+  </div>
+</div>
+
+<div class="page-transition" aria-hidden="true"></div>
+<main id="main">
+{% if messages %}<div class="container messages" aria-live="polite">{% for message in messages %}<div class="message {{ message.tags }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+{% block content %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div class="footer-brand"><a class="brand brand-light" href="{% url 'home' %}"><img class="brand-logo" src="{% static 'core/images/brand/logo/Logo_whs(6).png' %}" alt="NUVAIX GROUP logo"></a><p>A diversified group with a shared ambition: to innovate, build, deliver and grow.</p><span class="footer-tagline">INNOVATE • BUILD • DELIVER • GROW</span></div>
+    <div class="footer-links"><strong>Explore</strong><a href="{% url 'about' %}">About us</a><a href="{% url 'businesses' %}">Our businesses</a><a href="{% url 'technology' %}">Technology</a><a href="{% url 'paint' %}">NUVAIX Paint</a></div>
+    <div class="footer-links"><strong>Connect</strong><a href="{% url 'contact' %}">Contact</a><a href="{% url 'careers' %}">Careers</a><a href="{% url 'partnerships' %}">Partnerships</a><a href="{% url 'insights' %}">Insights</a></div>
+    <div class="footer-cta"><span class="eyebrow">HAVE A PROJECT IN MIND?</span><h3>Let's make progress together.</h3><a class="button button-gold" href="{% url 'contact' %}">Start a conversation ↗</a></div>
+  </div>
+  <div class="container footer-bottom"><span>© {% now "Y" %} NUVAIX GROUP. All rights reserved.</span><span>{{ company.legal_name }} · RC {{ company.rc }}</span><div><a href="{% url 'privacy' %}">Privacy</a><a href="{% url 'terms' %}">Terms</a></div></div>
+</footer>
+<a class="whatsapp-float" href="https://wa.me/2349132165565?text=Hello%20NUVAIX%20GROUP%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener noreferrer" aria-label="Chat with NUVAIX GROUP on WhatsApp"><span class="wa-icon">◔</span><span class="wa-label">Chat with us</span></a>
+</body>
+</html>
