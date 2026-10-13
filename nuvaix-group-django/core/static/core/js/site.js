@@ -202,6 +202,36 @@
     form.addEventListener('submit', event => { if (!form.reportValidity()) event.preventDefault(); });
   });
 
+  // Accessible floating social menu: click to toggle, Escape/outside click to close.
+  const socialFloat = document.querySelector('[data-social-float]');
+  if (socialFloat) {
+    const socialToggle = socialFloat.querySelector('.social-toggle');
+    const socialPanel = socialFloat.querySelector('#social-panel');
+    const setSocialOpen = open => {
+      socialFloat.classList.toggle('is-open', open);
+      socialToggle.setAttribute('aria-expanded', String(open));
+      socialToggle.setAttribute('aria-label', open ? 'Close social media links' : 'Open social media links');
+      socialPanel.setAttribute('aria-hidden', String(!open));
+      if (open) socialPanel.removeAttribute('inert');
+      else socialPanel.setAttribute('inert', '');
+    };
+    socialToggle.addEventListener('click', () => {
+      setSocialOpen(socialToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('pointerdown', event => {
+      if (!socialFloat.contains(event.target)) setSocialOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && socialToggle.getAttribute('aria-expanded') === 'true') {
+        setSocialOpen(false);
+        socialToggle.focus();
+      }
+    });
+    socialPanel.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setSocialOpen(false));
+    });
+  }
+
   // Keep all visible content accessible and usable when the browser restores a page.
   window.addEventListener('pageshow', () => curtain?.classList.remove('is-leaving'));
   root.classList.add('js-ready');

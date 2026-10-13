@@ -32,3 +32,30 @@
 .paint-product-stage{position:relative;z-index:2;width:min(100%,390px);aspect-ratio:1/1;margin:auto;overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.025));box-shadow:0 40px 100px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.18);transform-style:preserve-3d;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}.paint-product-stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.16),transparent 25%,transparent 65%,rgba(232,187,76,.1));mix-blend-mode:screen}.paint-product-stage img{display:block;width:100%;height:100%;object-fit:cover;transform:translateZ(25px) scale(1.015);transition:transform .6s var(--ease),filter .6s}.paint-product-stage:hover{border-color:rgba(255,220,122,.65);box-shadow:0 50px 110px rgba(0,0,0,.5),0 0 40px rgba(232,187,76,.1),inset 0 1px rgba(255,255,255,.25)}.paint-product-stage:hover img{transform:translateZ(35px) scale(1.055);filter:saturate(1.08)}.product-kicker,.product-foot{position:absolute;z-index:3;left:16px;right:16px;padding:9px 12px;border:1px solid rgba(255,255,255,.16);border-radius:7px;background:rgba(3,8,16,.66);backdrop-filter:blur(12px);color:#f3d98d;font-size:8px;font-weight:800;letter-spacing:.15em}.product-kicker{top:16px}.product-foot{bottom:16px;color:#e6edf7;text-align:center}
 @keyframes product-flip-in{0%{opacity:0;transform:perspective(1200px) rotateY(-24deg) rotateX(8deg) translateY(24px)}100%{opacity:1;transform:perspective(1200px) rotateY(0) rotateX(0) translateY(0)}}
 .paint-product-stage{animation:product-flip-in 1.1s var(--ease) .12s both;cursor:default}.paint-product-stage:hover{transform:perspective(1100px) rotateY(-7deg) rotateX(3deg) translateY(-5px)}.tilt-card.motion-visible{transform:perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg))}
+
+
+/* Simple social popup launcher, visually consistent with the existing Chat with us control */
+.social-float{position:fixed;right:22px;bottom:88px;z-index:1200;font-family:inherit}
+.social-toggle{display:flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:10px 15px;border:1px solid rgba(255,255,255,.22);border-radius:14px;background:#172b43;color:#fff;box-shadow:0 12px 28px rgba(0,0,0,.24);cursor:pointer;font:inherit;font-size:12px;font-weight:800;transition:background .2s ease,transform .2s ease}
+.social-toggle:hover{background:#233e5e;transform:translateY(-2px)}
+.social-toggle:focus-visible,.social-link:focus-visible{outline:3px solid #f4d58a;outline-offset:4px}
+.social-toggle-icon{width:21px;height:21px;flex:0 0 21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.social-toggle-label{font-size:12px;font-weight:800;letter-spacing:.01em;white-space:nowrap}
+.social-panel{position:absolute;right:0;bottom:calc(100% + 17px);width:min(330px,calc(100vw - 32px));padding:23px;border:1px solid rgba(255,255,255,.13);border-radius:22px;background:linear-gradient(150deg,rgba(16,35,59,.97),rgba(5,15,29,.97));box-shadow:0 28px 90px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);transform-origin:bottom right;opacity:0;visibility:hidden;transform:translateY(12px) scale(.94);transition:opacity .24s ease,transform .3s cubic-bezier(.2,.8,.2,1),visibility .24s}
+.social-float.is-open .social-panel{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.social-panel-heading{padding:1px 1px 18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.social-panel-kicker{display:block;margin-bottom:9px;color:#e8c777;font-size:9px;font-weight:800;letter-spacing:.2em}
+.social-panel-heading strong{display:block;color:#fff;font-size:23px;letter-spacing:-.045em;line-height:1.15}
+.social-panel-heading p{margin:8px 0 0;color:#aab8cb;font-size:12px;line-height:1.6}
+.social-links{display:grid;gap:7px;padding:15px 0}
+.social-link{display:flex;align-items:center;gap:12px;min-height:45px;padding:7px 10px;border:1px solid transparent;border-radius:12px;color:#eef3fa;text-decoration:none;font-size:13px;font-weight:650;transition:background .2s ease,border-color .2s ease,transform .2s ease}
+.social-link:hover{transform:translateX(3px);background:rgba(255,255,255,.065);border-color:rgba(255,255,255,.09)}
+.social-icon{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:rgba(255,255,255,.08);color:#fff}
+.social-icon svg{width:18px;height:18px;fill:currentColor}
+.social-facebook .social-icon{background:#1877f2}.social-x .social-icon{background:#111}.social-linkedin .social-icon{background:#0a66c2}.social-youtube .social-icon{background:#ff0033}.social-tiktok .social-icon{background:#171717;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}.social-github .social-icon{background:#24292f}.social-instagram .social-icon{background:linear-gradient(135deg,#7655d8,#e13e77 58%,#f5a44a)}
+.social-arrow{margin-left:auto;color:#8c9bb0;font-size:17px;transition:color .2s ease,transform .2s ease}.social-link:hover .social-arrow{color:#f1d58c;transform:translate(2px,-2px)}
+.social-panel-foot{display:flex;align-items:center;gap:8px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);color:#aab8cb;font-size:10px;letter-spacing:.04em}
+.social-live-dot{width:7px;height:7px;border-radius:50%;background:#74dfb0;box-shadow:0 0 12px rgba(116,223,176,.6)}
+75%,100%{transform:scale(1.13);opacity:0}}
+@media(max-width:600px){.social-float{right:16px;bottom:88px}.social-toggle{min-height:46px;padding:9px 13px}.social-panel{padding:19px}.social-panel-heading strong{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.social-panel,.social-link,.social-toggle,.social-toggle-icon{transition:none}}
